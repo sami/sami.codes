@@ -57,10 +57,10 @@
     <div id="game-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
 
     <!-- HEADER -->
-    <header class="py-10 flex flex-col md:flex-row gap-6 justify-between items-center w-full relative z-20">
+    <header class="py-10 flex flex-col md:flex-row gap-6 justify-between items-center w-full relative z-20" role="banner">
         <!-- Developer Logo -->
-        <div class="logo select-none">
-            <svg width="280" height="50" viewBox="0 0 280 50" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sami Bashraheel - Developer Logo">
+        <div class="logo select-none" role="img" aria-label="Sami Bashraheel Logo">
+            <svg width="280" height="50" viewBox="0 0 280 50" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <title>Sami Bashraheel</title>
                 <text x="0" y="35" font-family="'Fira Code', monospace" font-size="24" class="logo-bracket" font-weight="bold">&lt;</text>
                 <text x="20" y="35" font-family="'Fira Code', monospace" font-size="24" class="logo-name" font-weight="bold">Sami Bashraheel</text>
@@ -69,7 +69,7 @@
         </div>
 
         <!-- Controls -->
-        <div class="flex items-center gap-3 flex-wrap justify-center">
+        <nav class="flex items-center gap-3 flex-wrap justify-center" aria-label="Site controls">
             <button id="theme-reset" class="theme-btn px-3 py-2 rounded-lg" aria-label="Reset theme to automatic based on system preference">↺</button>
             <button id="theme-switcher" class="theme-btn px-4 py-2 rounded-lg min-w-[140px]" aria-label="Switch to a random theme">
                 Loading...
@@ -77,7 +77,7 @@
             <button id="contact-trigger" class="cta-btn px-6 py-2 rounded-lg" aria-label="Contact via email">
                 Say Hello 👋
             </button>
-        </div>
+        </nav>
     </header>
 
     <!-- MAIN CONTENT -->
@@ -115,13 +115,13 @@
         <!-- SKILLS -->
         <section aria-labelledby="skills-heading">
             <h2 id="skills-heading" class="text-xs uppercase tracking-widest font-bold mb-6 font-mono" style="color: var(--accent)">Stack</h2>
-            <div id="skills-list" class="flex flex-wrap gap-3">
-                <span class="skill-tag px-4 py-2 rounded-md text-sm">React</span>
-                <span class="skill-tag px-4 py-2 rounded-md text-sm">APIs</span>
-                <span class="skill-tag px-4 py-2 rounded-md text-sm">Tailwind</span>
-                <span class="skill-tag px-4 py-2 rounded-md text-sm">Python</span>
-                <span class="skill-tag px-4 py-2 rounded-md text-sm">PyTorch</span>
-            </div>
+            <ul id="skills-list" class="flex flex-wrap gap-3" role="list" aria-label="Technology stack">
+                <li class="skill-tag px-4 py-2 rounded-md text-sm">React</li>
+                <li class="skill-tag px-4 py-2 rounded-md text-sm">APIs</li>
+                <li class="skill-tag px-4 py-2 rounded-md text-sm">Tailwind</li>
+                <li class="skill-tag px-4 py-2 rounded-md text-sm">Python</li>
+                <li class="skill-tag px-4 py-2 rounded-md text-sm">PyTorch</li>
+            </ul>
         </section>
 
         <!-- PROJECTS -->
@@ -145,9 +145,9 @@
                         <div class="p-6">
                             <h3 class="text-lg font-bold mb-2 group-hover:underline" style="color: var(--text-main)">Countries of the World</h3>
                             <p class="text-sm mb-4" style="color: var(--text-muted)">A timed, voice-optional geography quiz where you try to name all 251 countries to light them up on an interactive map before the 15-minute timer ends.</p>
-                            <div class="flex gap-2 font-mono text-xs flex-wrap" style="color: var(--accent)">
-                                <span>React</span><span>TypeScript</span><span>Tailwind CSS</span><span>D3.js</span><span>GeoJSON</span><span>PWA</span><span>Web Speech API</span>
-                            </div>
+                            <ul class="flex gap-2 font-mono text-xs flex-wrap" style="color: var(--accent); list-style: none; padding: 0;" role="list" aria-label="Technologies used">
+                                <li>React</li><li>TypeScript</li><li>Tailwind CSS</li><li>D3.js</li><li>GeoJSON</li><li>PWA</li><li>Web Speech API</li>
+                            </ul>
                         </div>
                     </div>
                 </a>
@@ -174,7 +174,7 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="py-10 flex flex-col md:flex-row justify-between items-center text-xs font-mono" style="color: var(--text-muted)">
+    <footer class="py-10 flex flex-col md:flex-row justify-between items-center text-xs font-mono" style="color: var(--text-muted)" role="contentinfo">
         <p>&copy; 2026 Sami Bashraheel.</p>
         <p class="mt-2 md:mt-0">London, UK.</p>
     </footer>

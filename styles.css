@@ -169,10 +169,18 @@ body {
     font-family: 'Fira Code', monospace;
     transition: all 0.5s;
     cursor: default;
+    list-style: none;
 }
 .skill-tag:hover {
     background-color: color-mix(in srgb, var(--accent), transparent 70%);
     transform: translateY(-2px);
+}
+
+/* Skills list - remove default list styling */
+#skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 /* Standard Buttons (Theme Switcher, etc) */
