@@ -1,0 +1,268 @@
+/* --- THEME ENGINE --- */
+
+/* 1. MIDNIGHT (Default Dark) */
+[data-theme="midnight"] {
+    --bg-main: #0F172A;
+    --card-bg: #1E293B;
+    --text-main: #F1F5F9;
+    --text-muted: #94A3B8;
+    --accent: #38BDF8;     /* Switcher: Blue */
+    --game-obs: #EF4444;
+    --complaint: "Too Dark!";
+    --cta-bg: #A855F7;      /* CTA: Purple */
+    --cta-text: #FFFFFF;
+}
+
+/* 2. MINT (Default Light) */
+[data-theme="mint"] {
+    --bg-main: #F2F7F5;
+    --card-bg: #FFFFFF;
+    --text-main: #354F52;
+    --text-muted: #5F7D78;
+    --accent: #84B59F;      /* Switcher: Matcha */
+    --game-obs: #E76F51;
+    --complaint: "Too Pastel!";
+    --cta-bg: #2C4F46;      /* CTA: Deep Evergreen */
+    --cta-text: #FFFFFF;
+}
+
+/* 3. TERMINAL (Hacker) */
+[data-theme="terminal"] {
+    --bg-main: #000000;
+    --card-bg: #111111;
+    --text-main: #00FF00;
+    --text-muted: #008F11;
+    --accent: #00FF00;      /* Switcher: Green */
+    --game-obs: #00FF00;
+    --complaint: "Too Hackery!";
+    --cta-bg: #FACC15;      /* CTA: Yellow */
+    --cta-text: #000000;
+}
+
+/* 4. BLUEPRINT (Engineering) */
+[data-theme="blueprint"] {
+    --bg-main: #0033CC;
+    --card-bg: #0044EE;
+    --text-main: #FFFFFF;
+    --text-muted: #AACCEE;
+    --accent: #FFCC00;      /* Switcher: Yellow */
+    --game-obs: #FFFFFF;
+    --complaint: "Too Blue!";
+    --cta-bg: #FFFFFF;      /* CTA: White */
+    --cta-text: #0033CC;
+}
+
+/* 5. VAMPIRE (Gothic) */
+[data-theme="vampire"] {
+    --bg-main: #1a0505;
+    --card-bg: #2b0a0a;
+    --text-main: #ffcccc;
+    --text-muted: #cc4444;
+    --accent: #ff0000;      /* Switcher: Red */
+    --game-obs: #880000;
+    --complaint: "Too Edgy!";
+    --cta-bg: #FFFFFF;      /* CTA: White */
+    --cta-text: #000000;
+}
+
+/* 6. COFFEE (Warm) */
+[data-theme="coffee"] {
+    --bg-main: #F5E6D3;
+    --card-bg: #FFF8F0;
+    --text-main: #4A3B2A;
+    --text-muted: #8C7B68;
+    --accent: #D2691E;      /* Switcher: Caramel */
+    --game-obs: #654321;
+    --complaint: "Too Cozy!";
+    --cta-bg: #4B3621;      /* CTA: Dark Espresso */
+    --cta-text: #FFF8F0;
+}
+
+/* 7. FLASHBANG (Bright) */
+[data-theme="flashbang"] {
+    --bg-main: #FFFFFF;
+    --card-bg: #F0F0F0;
+    --text-main: #000000;
+    --text-muted: #555555;
+    --accent: #0000FF;      /* Switcher: Blue */
+    --game-obs: #FF0000;
+    --complaint: "Too Bright!";
+    --cta-bg: #000000;      /* CTA: Black */
+    --cta-text: #FFFFFF;
+}
+
+/* 8. ABYSS (Low Contrast) */
+[data-theme="abyss"] {
+    --bg-main: #050505;
+    --card-bg: #0A0A0A;
+    --text-main: #333333;
+    --text-muted: #222222;
+    --accent: #666666;      /* Switcher: Grey */
+    --game-obs: #222222;
+    --complaint: "Can't See!";
+    --cta-bg: #FFFFFF;      /* CTA: White */
+    --cta-text: #000000;
+}
+
+/* 9. RETROWAVE (Disco) */
+[data-theme="retrowave"] {
+    --bg-main: #180c2e;
+    --card-bg: #241245;
+    --text-main: #00f2ff;
+    --text-muted: #bd93f9;
+    --accent: #f9c80e;      /* Switcher: Yellow */
+    --game-obs: #00f2ff;
+    --complaint: "Too Discoy!";
+    --cta-bg: #FF00FF;      /* CTA: Hot Pink */
+    --cta-text: #FFFFFF;
+}
+
+/* 10. GRAYSCALE (Blank) */
+[data-theme="grayscale"] {
+    --bg-main: #DDDDDD;
+    --card-bg: #EEEEEE;
+    --text-main: #444444;
+    --text-muted: #888888;
+    --accent: #000000;      /* Switcher: Black */
+    --game-obs: #000000;
+    --complaint: "Too Boring!";
+    --cta-bg: #333333;      /* CTA: Dark Grey */
+    --cta-text: #FFFFFF;
+}
+
+/* --- GLOBAL STYLES --- */
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* SVGs inherit colors */
+.svg-stroke { stroke: var(--accent); transition: stroke 0.5s; }
+.svg-fill { fill: var(--accent); transition: fill 0.5s; }
+.svg-text { fill: var(--text-main); transition: fill 0.5s; }
+.logo-bracket { fill: var(--accent); transition: fill 0.5s; }
+.logo-name { fill: var(--text-main); transition: fill 0.5s; }
+.icon-hover:hover path { fill: var(--accent); transition: fill 0.2s; }
+.icon-path { fill: var(--text-muted); transition: fill 0.2s; }
+
+/* Card Styling */
+.tech-card {
+    background-color: var(--card-bg);
+    border: 1px solid color-mix(in srgb, var(--accent), transparent 80%);
+    transition: all 0.3s ease;
+}
+.tech-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 10px 30px -10px color-mix(in srgb, var(--accent), transparent 80%);
+}
+
+/* Skill Tag */
+.skill-tag {
+    background-color: color-mix(in srgb, var(--accent), transparent 90%);
+    color: var(--accent);
+    border: 1px solid color-mix(in srgb, var(--accent), transparent 70%);
+    font-family: 'Fira Code', monospace;
+    transition: all 0.5s;
+    cursor: default;
+}
+.skill-tag:hover {
+    background-color: color-mix(in srgb, var(--accent), transparent 70%);
+    transform: translateY(-2px);
+}
+
+/* Standard Buttons (Theme Switcher, etc) */
+.theme-btn {
+    background: var(--card-bg);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.75rem;
+    font-weight: bold;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+.theme-btn:hover {
+    background: var(--accent);
+    color: var(--bg-main);
+}
+
+/* Loading state for theme button */
+.theme-btn.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.theme-btn.loading::after {
+    content: '...';
+    animation: loading-dots 1.5s infinite;
+}
+
+@keyframes loading-dots {
+    0%, 20% { content: '.'; }
+    40% { content: '..'; }
+    60%, 100% { content: '...'; }
+}
+
+/* --- CALL TO ACTION (THEME SPECIFIC) --- */
+.cta-btn {
+    background-color: var(--cta-bg) !important;
+    border: 2px solid var(--cta-bg) !important;
+    color: var(--cta-text) !important;
+
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+    font-weight: 800;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    box-shadow: 0 4px 15px color-mix(in srgb, var(--cta-bg), transparent 50%);
+    letter-spacing: 0.05em;
+}
+
+.cta-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1) contrast(1.1);
+    box-shadow: 0 6px 20px color-mix(in srgb, var(--cta-bg), transparent 30%);
+}
+
+/* Game Canvas */
+#game-container {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    height: 140px;
+    overflow: hidden;
+    border-bottom: 2px solid var(--accent);
+    transition: border-color 0.5s;
+}
+
+canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#game-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-main);
+    opacity: 0.9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: background-color 0.5s;
+}
+
+*:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
