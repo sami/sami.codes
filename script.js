@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const html = document.documentElement;
     const themeBtn = document.getElementById('theme-switcher');
     const resetBtn = document.getElementById('theme-reset');
+    const themeAnnouncer = document.getElementById('theme-announcer');
+    const gameAnnouncer = document.getElementById('game-announcer');
 
     const themes = [
         'midnight', 'mint', 'terminal', 'blueprint',
@@ -41,6 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
             themeBtn.textContent = complaint || "Switch Theme";
             themeBtn.classList.remove('loading');
             updateGameColors();
+
+            // Announce theme change to screen readers
+            const themeNameFormatted = themeName.charAt(0).toUpperCase() + themeName.slice(1);
+            themeAnnouncer.textContent = `Theme changed to ${themeNameFormatted}. ${complaint}`;
         }, 100);
     }
 
@@ -83,6 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let gameRunning = false;
     let animationId;
     let score = 0;
+    let lastAnnouncedScore = 0; // Track last announced score for milestones
     let gameSpeed = 3;
 
     let colPlayer = '#38BDF8';
@@ -165,6 +172,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if(obs.x + obs.w < 0) {
                 obstacles.shift();
                 score++;
+
+                // Announce score milestones to screen readers
+                if (score > 0 && score % 10 === 0 && score !== lastAnnouncedScore) {
+                    gameAnnouncer.textContent = `Score: ${score}`;
+                    lastAnnouncedScore = score;
+                }
             }
         });
 
@@ -185,18 +198,25 @@ document.addEventListener('DOMContentLoaded', () => {
         overlay.style.display = 'flex';
         overlay.querySelector('p').textContent = `SCORE: ${score}`;
         startBtn.textContent = "RETRY";
+
+        // Announce game over to screen readers
+        gameAnnouncer.textContent = `Game over! Final score: ${score}. Press the retry button or space to play again.`;
     }
 
     function reset() {
         resize();
         obstacles = [];
         score = 0;
+        lastAnnouncedScore = 0; // Reset score announcements
         player.y = canvas.height - player.h;
         player.dy = 0;
         gameRunning = true;
         lastFrameTime = 0; // Reset frame timer
         overlay.style.display = 'none';
         animationId = requestAnimationFrame(update);
+
+        // Announce game start to screen readers
+        gameAnnouncer.textContent = 'Game started! Press space or tap to jump over obstacles.';
     }
 
     startBtn.addEventListener('click', (e) => { e.stopPropagation(); reset(); });
