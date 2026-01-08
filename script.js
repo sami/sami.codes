@@ -1,5 +1,66 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // --- COOKIE CONSENT ---
+    const COOKIE_CONSENT_KEY = 'cookie-consent';
+    const GA_ID = 'G-S52J51L0RC';
+
+    function loadGoogleAnalytics() {
+        // Create and load gtag.js script
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+        document.head.appendChild(script);
+
+        // Initialize gtag
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', GA_ID);
+    }
+
+    function handleCookieConsent(accepted) {
+        // Store user's choice
+        localStorage.setItem(COOKIE_CONSENT_KEY, accepted ? 'accepted' : 'declined');
+
+        // Hide banner
+        const banner = document.getElementById('cookie-consent');
+        banner.style.display = 'none';
+
+        // Load Google Analytics if accepted
+        if (accepted) {
+            loadGoogleAnalytics();
+        }
+    }
+
+    function checkCookieConsent() {
+        const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
+
+        if (consent === 'accepted') {
+            // User previously accepted, load Google Analytics
+            loadGoogleAnalytics();
+        } else if (consent === 'declined') {
+            // User previously declined, do nothing
+            return;
+        } else {
+            // No previous choice, show banner
+            const banner = document.getElementById('cookie-consent');
+            banner.style.display = 'block';
+        }
+    }
+
+    // Cookie consent buttons
+    document.getElementById('cookie-accept').addEventListener('click', () => {
+        handleCookieConsent(true);
+    });
+
+    document.getElementById('cookie-decline').addEventListener('click', () => {
+        handleCookieConsent(false);
+    });
+
+    // Check consent on page load
+    checkCookieConsent();
+
+
     // --- THEME ENGINE ---
     const html = document.documentElement;
     const themeBtn = document.getElementById('theme-switcher');
