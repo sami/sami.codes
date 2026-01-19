@@ -64,7 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- THEME ENGINE ---
     const html = document.documentElement;
     const themeBtn = document.getElementById('theme-switcher');
-    const resetBtn = document.getElementById('theme-reset');
     const themeAnnouncer = document.getElementById('theme-announcer');
     const gameAnnouncer = document.getElementById('game-announcer');
 
@@ -120,9 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const randomTheme = available[Math.floor(Math.random() * available.length)];
         setTheme(randomTheme);
     });
-
-    // 4. Reset Logic
-    resetBtn.addEventListener('click', setAutoTheme);
 
     // Initialize
     setAutoTheme();
