@@ -57,6 +57,13 @@ document.addEventListener('DOMContentLoaded', () => {
         handleCookieConsent(false);
     });
 
+    // Cookie preferences link in footer - allows users to change their choice
+    document.getElementById('cookie-preferences').addEventListener('click', () => {
+        localStorage.removeItem(COOKIE_CONSENT_KEY);
+        const banner = document.getElementById('cookie-consent');
+        banner.style.display = 'block';
+    });
+
     // Check consent on page load
     checkCookieConsent();
 
