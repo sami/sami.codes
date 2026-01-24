@@ -6,10 +6,12 @@
     --card-bg: #1E293B;
     --text-main: #F1F5F9;
     --text-muted: #94A3B8;
-    --accent: #38BDF8;     /* Switcher: Blue */
+    --accent: #38BDF8;
+    /* Switcher: Blue */
     --game-obs: #EF4444;
     --complaint: "Too Dark!";
-    --cta-bg: #A855F7;      /* CTA: Purple */
+    --cta-bg: #A855F7;
+    /* CTA: Purple */
     --cta-text: #FFFFFF;
 }
 
@@ -19,10 +21,12 @@
     --card-bg: #FFFFFF;
     --text-main: #354F52;
     --text-muted: #5F7D78;
-    --accent: #84B59F;      /* Switcher: Matcha */
+    --accent: #84B59F;
+    /* Switcher: Matcha */
     --game-obs: #E76F51;
     --complaint: "Too Pastel!";
-    --cta-bg: #2C4F46;      /* CTA: Deep Evergreen */
+    --cta-bg: #2C4F46;
+    /* CTA: Deep Evergreen */
     --cta-text: #FFFFFF;
 }
 
@@ -32,10 +36,12 @@
     --card-bg: #111111;
     --text-main: #00FF00;
     --text-muted: #008F11;
-    --accent: #00FF00;      /* Switcher: Green */
+    --accent: #00FF00;
+    /* Switcher: Green */
     --game-obs: #00FF00;
     --complaint: "Too Hackery!";
-    --cta-bg: #FACC15;      /* CTA: Yellow */
+    --cta-bg: #FACC15;
+    /* CTA: Yellow */
     --cta-text: #000000;
 }
 
@@ -45,10 +51,12 @@
     --card-bg: #0044EE;
     --text-main: #FFFFFF;
     --text-muted: #AACCEE;
-    --accent: #FFCC00;      /* Switcher: Yellow */
+    --accent: #FFCC00;
+    /* Switcher: Yellow */
     --game-obs: #FFFFFF;
     --complaint: "Too Blue!";
-    --cta-bg: #FFFFFF;      /* CTA: White */
+    --cta-bg: #FFFFFF;
+    /* CTA: White */
     --cta-text: #0033CC;
 }
 
@@ -58,10 +66,12 @@
     --card-bg: #2b0a0a;
     --text-main: #ffcccc;
     --text-muted: #cc4444;
-    --accent: #ff0000;      /* Switcher: Red */
+    --accent: #ff0000;
+    /* Switcher: Red */
     --game-obs: #880000;
     --complaint: "Too Edgy!";
-    --cta-bg: #FFFFFF;      /* CTA: White */
+    --cta-bg: #FFFFFF;
+    /* CTA: White */
     --cta-text: #000000;
 }
 
@@ -71,10 +81,12 @@
     --card-bg: #FFF8F0;
     --text-main: #4A3B2A;
     --text-muted: #8C7B68;
-    --accent: #D2691E;      /* Switcher: Caramel */
+    --accent: #D2691E;
+    /* Switcher: Caramel */
     --game-obs: #654321;
     --complaint: "Too Cozy!";
-    --cta-bg: #4B3621;      /* CTA: Dark Espresso */
+    --cta-bg: #4B3621;
+    /* CTA: Dark Espresso */
     --cta-text: #FFF8F0;
 }
 
@@ -84,10 +96,12 @@
     --card-bg: #F0F0F0;
     --text-main: #000000;
     --text-muted: #555555;
-    --accent: #0000FF;      /* Switcher: Blue */
+    --accent: #0000FF;
+    /* Switcher: Blue */
     --game-obs: #FF0000;
     --complaint: "Too Bright!";
-    --cta-bg: #000000;      /* CTA: Black */
+    --cta-bg: #000000;
+    /* CTA: Black */
     --cta-text: #FFFFFF;
 }
 
@@ -97,10 +111,12 @@
     --card-bg: #0A0A0A;
     --text-main: #333333;
     --text-muted: #222222;
-    --accent: #666666;      /* Switcher: Grey */
+    --accent: #666666;
+    /* Switcher: Grey */
     --game-obs: #222222;
     --complaint: "Can't See!";
-    --cta-bg: #FFFFFF;      /* CTA: White */
+    --cta-bg: #FFFFFF;
+    /* CTA: White */
     --cta-text: #000000;
 }
 
@@ -110,10 +126,12 @@
     --card-bg: #241245;
     --text-main: #00f2ff;
     --text-muted: #bd93f9;
-    --accent: #f9c80e;      /* Switcher: Yellow */
+    --accent: #f9c80e;
+    /* Switcher: Yellow */
     --game-obs: #00f2ff;
     --complaint: "Too Discoy!";
-    --cta-bg: #FF00FF;      /* CTA: Hot Pink */
+    --cta-bg: #FF00FF;
+    /* CTA: Hot Pink */
     --cta-text: #FFFFFF;
 }
 
@@ -123,10 +141,12 @@
     --card-bg: #EEEEEE;
     --text-main: #444444;
     --text-muted: #888888;
-    --accent: #000000;      /* Switcher: Black */
+    --accent: #000000;
+    /* Switcher: Black */
     --game-obs: #000000;
     --complaint: "Too Boring!";
-    --cta-bg: #333333;      /* CTA: Dark Grey */
+    --cta-bg: #333333;
+    /* CTA: Dark Grey */
     --cta-text: #FFFFFF;
 }
 
@@ -138,16 +158,73 @@ body {
     -webkit-font-smoothing: antialiased;
     line-height: 1.6;
     transition: background-color 0.5s ease, color 0.5s ease;
+    isolation: isolate;
+}
+
+/* Animated Background */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Subtle gradient using the accent color */
+    background: radial-gradient(circle at 50% 50%, var(--accent), transparent 70%);
+    opacity: 0.15;
+    /* Increased visibility */
+    z-index: -1;
+    pointer-events: none;
+    animation: pulse-bg 10s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-bg {
+    0% {
+        transform: scale(1);
+        opacity: 0.15;
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0.25;
+    }
 }
 
 /* SVGs inherit colors */
-.svg-stroke { stroke: var(--accent); transition: stroke 0.5s; }
-.svg-fill { fill: var(--accent); transition: fill 0.5s; }
-.svg-text { fill: var(--text-main); transition: fill 0.5s; }
-.logo-bracket { fill: var(--accent); transition: fill 0.5s; }
-.logo-name { fill: var(--text-main); transition: fill 0.5s; }
-.icon-hover:hover path { fill: var(--accent); transition: fill 0.2s; }
-.icon-path { fill: var(--text-muted); transition: fill 0.2s; }
+.svg-stroke {
+    stroke: var(--accent);
+    transition: stroke 0.5s;
+}
+
+.svg-fill {
+    fill: var(--accent);
+    transition: fill 0.5s;
+}
+
+.svg-text {
+    fill: var(--text-main);
+    transition: fill 0.5s;
+}
+
+.logo-bracket {
+    fill: var(--accent);
+    transition: fill 0.5s;
+}
+
+.logo-name {
+    fill: var(--text-main);
+    transition: fill 0.5s;
+}
+
+.icon-hover:hover path {
+    fill: var(--accent);
+    transition: fill 0.2s;
+}
+
+.icon-path {
+    fill: var(--text-muted);
+    transition: fill 0.2s;
+}
 
 /* Card Styling */
 .tech-card {
@@ -155,6 +232,7 @@ body {
     border: 1px solid color-mix(in srgb, var(--accent), transparent 80%);
     transition: all 0.3s ease;
 }
+
 .tech-card:hover {
     transform: translateY(-4px);
     border-color: var(--accent);
@@ -171,6 +249,7 @@ body {
     cursor: default;
     list-style: none;
 }
+
 .skill-tag:hover {
     background-color: color-mix(in srgb, var(--accent), transparent 70%);
     transform: translateY(-2px);
@@ -194,6 +273,7 @@ body {
     transition: all 0.2s;
     cursor: pointer;
 }
+
 .theme-btn:hover {
     background: var(--accent);
     color: var(--bg-main);
@@ -211,9 +291,20 @@ body {
 }
 
 @keyframes loading-dots {
-    0%, 20% { content: '.'; }
-    40% { content: '..'; }
-    60%, 100% { content: '...'; }
+
+    0%,
+    20% {
+        content: '.';
+    }
+
+    40% {
+        content: '..';
+    }
+
+    60%,
+    100% {
+        content: '...';
+    }
 }
 
 /* --- CALL TO ACTION (THEME SPECIFIC) --- */
@@ -321,6 +412,7 @@ canvas {
         transform: translateY(100%);
         opacity: 0;
     }
+
     to {
         transform: translateY(0);
         opacity: 1;
