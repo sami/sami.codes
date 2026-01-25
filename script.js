@@ -81,10 +81,9 @@ document.addEventListener('DOMContentLoaded', () => {
         'royal', 'forest', 'candy'
     ];
 
-    // 1. Time of Day Logic (Auto Detect via System Prefs)
+    // 1. Force Dark Theme on Start
     function setAutoTheme() {
-        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        setTheme(prefersDark ? 'midnight' : 'mint');
+        setTheme('midnight');
     }
 
     if (window.matchMedia) {
