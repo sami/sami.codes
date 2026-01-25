@@ -150,6 +150,81 @@
     --cta-text: #FFFFFF;
 }
 
+/* 11. DESERT (Warm) */
+[data-theme="desert"] {
+    --bg-main: #F4E4BC;
+    --card-bg: #FDF6E3;
+    --text-main: #5D4037;
+    --text-muted: #8D6E63;
+    --accent: #FF7043;
+    /* Switcher: Burnt Orange */
+    --game-obs: #D84315;
+    --complaint: "Too Dry!";
+    --cta-bg: #E65100;
+    /* CTA: Deep Orange */
+    --cta-text: #FFFFFF;
+}
+
+/* 12. OCEANIC (Deep Sea) */
+[data-theme="oceanic"] {
+    --bg-main: #002B36;
+    --card-bg: #073642;
+    --text-main: #839496;
+    --text-muted: #586E75;
+    --accent: #2AA198;
+    /* Switcher: Cyan */
+    --game-obs: #CB4B16;
+    --complaint: "Too Wet!";
+    --cta-bg: #268BD2;
+    /* CTA: Blue */
+    --cta-text: #FFFFFF;
+}
+
+/* 13. ROYAL (Purple/Gold) */
+[data-theme="royal"] {
+    --bg-main: #2E1A47;
+    --card-bg: #4c2a78;
+    --text-main: #FFD700;
+    --text-muted: #D4AF37;
+    --accent: #9932CC;
+    /* Switcher: Orchid */
+    --game-obs: #FFFFFF;
+    --complaint: "Too Fancy!";
+    --cta-bg: #FFD700;
+    /* CTA: Gold */
+    --cta-text: #2E1A47;
+}
+
+/* 14. FOREST (Nature) */
+[data-theme="forest"] {
+    --bg-main: #1B2618;
+    --card-bg: #2C3E28;
+    --text-main: #D8E2DC;
+    --text-muted: #95A390;
+    --accent: #9BC53D;
+    /* Switcher: Lime Green */
+    --game-obs: #C3423F;
+    --complaint: "Too Earthy!";
+    --cta-bg: #5C8001;
+    /* CTA: Olive */
+    --cta-text: #FFFFFF;
+}
+
+/* 15. CANDY (Pastel Pop) */
+[data-theme="candy"] {
+    --bg-main: #FFF0F5;
+    --card-bg: #FFFFFF;
+    --text-main: #FF69B4;
+    --text-muted: #FFB6C1;
+    --accent: #00BFFF;
+    /* Switcher: Sky Blue */
+    --game-obs: #FF1493;
+    --complaint: "Too Sweet!";
+    --cta-bg: #FF69B4;
+    /* CTA: Hot Pink */
+    --cta-text: #FFFFFF;
+}
+
 /* --- GLOBAL STYLES --- */
 body {
     background-color: var(--bg-main);

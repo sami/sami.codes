@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Initialize gtag
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', GA_ID);
     }
@@ -77,7 +77,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const themes = [
         'midnight', 'mint', 'terminal', 'blueprint',
         'vampire', 'coffee', 'flashbang', 'abyss',
-        'retrowave', 'grayscale'
+        'retrowave', 'grayscale', 'desert', 'oceanic',
+        'royal', 'forest', 'candy'
     ];
 
     // 1. Time of Day Logic (Auto Detect via System Prefs)
@@ -166,8 +167,8 @@ document.addEventListener('DOMContentLoaded', () => {
         colObs = s.getPropertyValue('--game-obs').trim() || '#EF4444';
         colAccent = s.getPropertyValue('--accent').trim() || '#38BDF8';
 
-        if(!gameRunning) {
-            ctx.clearRect(0,0,canvas.width,canvas.height);
+        if (!gameRunning) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
         }
     }
 
@@ -176,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let obstacles = [];
 
     function update(currentTime) {
-        if(!gameRunning) return;
+        if (!gameRunning) return;
 
         // FPS Limiting - only update if enough time has passed
         if (currentTime - lastFrameTime < frameDuration) {
@@ -192,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
         player.dy += gravity;
         player.y += player.dy;
 
-        if(player.y + player.h > groundY) {
+        if (player.y + player.h > groundY) {
             player.y = groundY - player.h;
             player.dy = 0;
             player.grounded = true;
@@ -210,14 +211,14 @@ document.addEventListener('DOMContentLoaded', () => {
         // Gap logic adjustment for slower speeds
         const minGap = (gameSpeed * 22) + (100 * (1 - difficulty));
 
-        const lastObs = obstacles[obstacles.length-1];
+        const lastObs = obstacles[obstacles.length - 1];
         const dist = lastObs ? canvas.width - lastObs.x : 9999;
 
-        if(dist > minGap + (Math.random() * 150)) {
+        if (dist > minGap + (Math.random() * 150)) {
             obstacles.push({
                 x: canvas.width,
-                w: 15 + (Math.random()*10),
-                h: 20 + (Math.random()*20)
+                w: 15 + (Math.random() * 10),
+                h: 20 + (Math.random() * 20)
             });
         }
 
@@ -233,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 gameOver();
             }
 
-            if(obs.x + obs.w < 0) {
+            if (obs.x + obs.w < 0) {
                 obstacles.shift();
                 score++;
 
@@ -253,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function jump() {
-        if(player.grounded && gameRunning) player.dy = player.jump;
+        if (player.grounded && gameRunning) player.dy = player.jump;
     }
 
     function gameOver() {
@@ -284,22 +285,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     startBtn.addEventListener('click', (e) => { e.stopPropagation(); reset(); });
-    container.addEventListener('mousedown', () => { if(gameRunning) jump(); });
+    container.addEventListener('mousedown', () => { if (gameRunning) jump(); });
     window.addEventListener('keydown', (e) => {
-        if(e.code === 'Space') {
-            if(!gameRunning && overlay.style.display !== 'none' && document.activeElement !== startBtn) reset();
+        if (e.code === 'Space') {
+            if (!gameRunning && overlay.style.display !== 'none' && document.activeElement !== startBtn) reset();
             else jump();
-            if(e.target === document.body) e.preventDefault();
+            if (e.target === document.body) e.preventDefault();
         }
     });
     container.addEventListener('touchstart', (e) => {
-        if(e.target === startBtn) return;
+        if (e.target === startBtn) return;
         e.preventDefault();
-        if(gameRunning) jump();
-    }, {passive:false});
+        if (gameRunning) jump();
+    }, { passive: false });
 
     // Contact CTA Handler
-    document.getElementById('contact-trigger').addEventListener('click', function(e) {
+    document.getElementById('contact-trigger').addEventListener('click', function (e) {
         const email = 'hello@sami.codes';
         window.location.href = 'mailto:' + email;
         this.textContent = email;
