@@ -1,0 +1,21 @@
+<!--
+  Graduation Cap icon from Lucide Icons (filled version for favicon)
+  https://lucide.dev/icons/graduation-cap
+  License: ISC License (https://lucide.dev/license)
+  Copyright (c) for portions of Lucide are held by Cole Bemis 2013-2022 as part of Feather (MIT).
+  All other copyright (c) for Lucide are held by Lucide Contributors 2022.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <!-- Background circle for better visibility -->
+  <circle cx="256" cy="256" r="240" fill="#8b5cf6"/>
+  
+  <!-- Graduation cap (scaled and centered) -->
+  <g transform="translate(256, 256) scale(10)">
+    <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" 
+          fill="white" stroke="white" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M22 10v6" 
+          stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" 
+          stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
