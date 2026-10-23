@@ -1,0 +1,164 @@
+---
+title: "Git and GitHub for your first project"
+description: "The Git and GitHub basics you need for your first project, then publish a one-page site with GitHub Pages."
+pubDate: 2026-10-23
+tags: ["git", "github", "beginners", "building-the-web"]
+draft: true
+---
+
+Git and GitHub are the first tools most developers set up, and the first ones that feel confusing. This post covers the parts you need for your first project, then you put them to use by publishing a one-page site with GitHub Pages.
+
+This is part of Building the Web, a series that goes from your first HTML page to a deployed full-stack app.
+
+## Git and GitHub are different things
+
+**Git** is a program on your computer. It records snapshots of your project so you can see what changed, when and why, and go back if something breaks.
+
+**GitHub** is a website that stores Git projects online. It gives you a backup, a way to share your code and tools for working with other people.
+
+You can use Git without GitHub. Most people use both.
+
+## The three places your code lives
+
+Git keeps track of your files in three places:
+
+1. **Working directory:** the files you are editing.
+2. **Staging area:** the changes you have picked for the next snapshot.
+3. **Repository:** the saved snapshots, called commits.
+
+{/* TODO Visual: diagram of working directory, staging area and repository, with git add and git commit arrows */}
+
+You move a change from your files to the staging area with `git add`, then save it as a commit with `git commit`.
+
+## The commands you will use every day
+
+```bash
+git init                      # start tracking this folder
+git status                    # see what has changed
+git add index.html            # stage one file
+git add .                     # stage every change
+git commit -m "Add homepage"  # save a snapshot with a message
+git log --oneline             # list your commits
+```
+
+Run `git status` often. It tells you what Git sees and usually what to do next.
+
+## Writing a good commit message
+
+A commit message says what the commit does, in a few words, written as an instruction:
+
+- Good: `Add contact form`
+- Good: `Fix footer overlapping on mobile`
+- Not useful: `update`, `stuff`, `changes`
+
+You will read these messages months later. Write them for that person.
+
+## Branches
+
+A branch is a separate line of work. You create one to try something without touching your working version, then merge it back when it is ready.
+
+```bash
+git switch -c add-about-page   # create a branch and move to it
+# ...make changes, add and commit...
+git switch main                # go back to main
+git merge add-about-page       # bring the changes in
+```
+
+For your first projects you can work on `main`. Start using branches once you are comfortable with commits.
+
+## Pushing to GitHub
+
+Your commits live on your computer until you push them. To connect a project to GitHub:
+
+1. Create an empty repository on GitHub.
+2. Copy the commands GitHub shows you. They look like this:
+
+```bash
+git remote add origin https://github.com/your-username/my-first-site.git
+git branch -M main
+git push -u origin main
+```
+
+After that, `git push` sends new commits and `git pull` brings down changes made elsewhere.
+
+{/* TODO Visual: GIF of a commit and push from the terminal */}
+
+## Workshop: publish a one-page site with GitHub Pages
+
+You will put a single HTML page online for free.
+
+**1. Create the project**
+
+```bash
+mkdir my-first-site
+cd my-first-site
+git init
+```
+
+**2. Add a page**
+
+Create `index.html`:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My first site</title>
+  </head>
+  <body>
+    <main>
+      <h1>Hello, I'm learning web development</h1>
+      <p>This page is published with GitHub Pages.</p>
+    </main>
+  </body>
+</html>
+```
+
+**3. Commit it**
+
+```bash
+git add index.html
+git commit -m "Add homepage"
+```
+
+**4. Push it to GitHub**
+
+Create a new public repository called `my-first-site` on GitHub, without a README, and run the commands it shows you to push your existing code.
+
+**5. Turn on GitHub Pages**
+
+In the repository, go to **Settings**, then **Pages**. Under **Build and deployment**, choose **Deploy from a branch**, pick `main` and the `/ (root)` folder, and save.
+
+{/* TODO Visual: screenshot of the GitHub Pages settings */}
+
+After a minute or two your site is live at `https://your-username.github.io/my-first-site/`.
+
+**6. Make a change and publish again**
+
+Edit the heading, then:
+
+```bash
+git add index.html
+git commit -m "Update heading"
+git push
+```
+
+Refresh the live page after a minute and you will see the change. That loop of edit, commit and push is how you will update every project from now on.
+
+{/* TODO Visual: short GIF of the finished site and an update going live */}
+
+## Gotchas
+
+- **Committing without staging.** `git commit` only saves what you staged. If nothing happens, run `git status` and `git add` first.
+- **Pushing before you commit.** `git push` sends commits, not changes. Uncommitted edits stay on your computer.
+- **The page shows a 404.** Check the file is called `index.html` exactly, in the root of the repository, and give Pages a couple of minutes.
+- **Secrets in commits.** Never commit passwords or API keys. Once pushed, assume they are public, even if you delete them later.
+- **`master` or `main`.** Older guides use `master`. New repositories on GitHub use `main`. They work the same way.
+
+## Further reading
+
+- [Pro Git book](https://git-scm.com/book/en/v2), free and covers everything in depth
+- [GitHub Docs: GitHub Pages](https://docs.github.com/en/pages)
+- [GitHub Docs: About Git](https://docs.github.com/en/get-started/using-git/about-git)
