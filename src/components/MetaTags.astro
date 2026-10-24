@@ -14,7 +14,7 @@ export interface Props {
 const { title, description, image, canonicalURL, isHomepage = false, article } = Astro.props as Props
 const fullTitle =
   title === 'Home'
-    ? 'Sami Bashraheel — Web & AI Developer'
+    ? 'Sami Bashraheel | Full-Stack Web Developer'
     : `${title} | Sami Bashraheel`
 
 const absoluteImage = new URL(image, Astro.site || 'https://sami.codes').href
@@ -52,7 +52,7 @@ const ogType = article ? 'article' : 'website'
 <meta property="twitter:title" content={fullTitle} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={absoluteImage} />
-<meta property="twitter:site" content="@madebysami" />
+<meta property="twitter:site" content="@made_by_sami" />
 
 <!-- Structured Data: Person (JSON-LD) — homepage only -->
 {
@@ -64,10 +64,10 @@ const ogType = article ? 'article' : 'website'
         '@type': 'Person',
         name: 'Sami Bashraheel',
         url: 'https://sami.codes',
-        jobTitle: 'Web & AI Developer',
+        jobTitle: 'Full-Stack Web Developer',
         sameAs: [
           'https://github.com/sami',
-          'https://x.com/madebysami',
+          'https://x.com/made_by_sami',
           'https://dev.to/sami',
         ],
       })}
