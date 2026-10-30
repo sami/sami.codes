@@ -1,0 +1,26 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+  {% set active_tag = uri.param('tag') %}
+  {% set collection = page.collection() %}
+  <section aria-labelledby="blog-heading" class="w-full">
+    <div class="mb-6">
+      <a href="{{ active_tag ? page.url : home_url }}" class="block mb-6 text-sm font-mono text-brand hover:underline">cd ../</a>
+      {% if active_tag %}
+        <h1 id="blog-heading" class="text-xs uppercase tracking-widest font-bold font-mono text-brand mb-2">#{{ active_tag }}</h1>
+        <p class="text-text-secondary text-sm">{{ collection|length }} {{ collection|length == 1 ? 'post' : 'posts' }} tagged with "{{ active_tag }}"</p>
+      {% else %}
+        <h1 id="blog-heading" class="text-xs uppercase tracking-widest font-bold font-mono text-brand mb-4">{{ page.title }}</h1>
+        <p class="text-text-secondary text-sm">{{ page.header.description }}</p>
+      {% endif %}
+    </div>
+
+    <div class="flex flex-col gap-6">
+      {% for post in collection %}
+        {% include 'partials/post-row.html.twig' with { post: post, active_tag: active_tag } %}
+      {% else %}
+        <p class="text-text-secondary text-sm font-mono">&gt; No transmissions found.</p>
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}

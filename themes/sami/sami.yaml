@@ -1,0 +1,14 @@
+enabled: true
+contact_email: hello@sami.codes
+google_analytics_id: ''
+google_site_verification: 0V0322chyCByP8rbrMp5mlD1nHcx7I4JnuyNrqxBfTs
+twitter_handle: '@made_by_sami'
+socials:
+  - name: github
+    url: https://github.com/sami
+  - name: linkedin
+    url: https://linkedin.com/in/samibashraheel
+  - name: x
+    url: https://x.com/made_by_sami
+  - name: devto
+    url: https://dev.to/sami

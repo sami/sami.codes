@@ -1,0 +1,6 @@
+enabled: true
+limit: 20
+description: 'Writing about web development, AI, and building in public.'
+lang: en-gb
+length: 500
+enable_json_feed: false

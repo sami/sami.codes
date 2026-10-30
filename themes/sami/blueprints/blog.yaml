@@ -1,0 +1,15 @@
+title: Blog
+extends@:
+  type: default
+  context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      fields:
+        content:
+          fields:
+            header.description:
+              type: textarea
+              label: Intro line
+              ordering@: header.title

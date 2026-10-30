@@ -1,0 +1,91 @@
+{% set theme_config = config.theme %}
+{% set tag_filter = uri.param('tag') %}
+{% set is_home = page.home %}
+{% set is_post = page.template == 'item' %}
+{% set ga_id = theme_config.google_analytics_id|trim %}
+
+{% if is_home %}
+  {% set full_title = site.title ~ ' | Full-Stack Web Developer' %}
+{% elseif tag_filter %}
+  {% set full_title = '#' ~ tag_filter ~ ' | ' ~ site.title %}
+{% else %}
+  {% set full_title = page.title ~ ' | ' ~ site.title %}
+{% endif %}
+
+{% if tag_filter %}
+  {% set meta_description = 'All posts tagged with "' ~ tag_filter ~ '" on sami.codes.' %}
+  {% set canonical = base_url_absolute ~ '/blog/tags/' ~ tag_filter|url_encode %}
+{% else %}
+  {% set meta_description = page.header.description ?: site.metadata.description %}
+  {% set canonical = is_home ? base_url_absolute ~ '/' : page.url(true) %}
+{% endif %}
+
+{% set og_image = url('theme://images/og-image.jpg', true) %}
+<!DOCTYPE html>
+<html lang="en-GB" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {% if theme_config.google_site_verification %}
+    <meta name="google-site-verification" content="{{ theme_config.google_site_verification }}" />
+    {% endif %}
+    <link rel="icon" type="image/svg+xml" href="{{ url('theme://images/favicon.svg') }}" />
+    <link rel="alternate icon" type="image/png" href="{{ url('theme://images/favicon.png') }}" />
+    <link rel="apple-touch-icon" href="{{ url('theme://images/favicon.png') }}" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ url('theme://fonts/inter-latin-400-normal.woff2') }}" />
+
+    {% include 'partials/meta.html.twig' %}
+
+    <script>
+      ;(function () {
+        try {
+          var stored = localStorage.getItem('theme')
+          var theme = stored
+          if (!stored) {
+            theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'midnight' : 'mint'
+          }
+          if (theme !== 'midnight') document.documentElement.classList.add('theme-' + theme)
+        } catch (e) {}
+      })()
+    </script>
+
+    {% if ga_id %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ ga_id|url_encode }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || []
+      function gtag() { dataLayer.push(arguments) }
+      gtag('js', new Date())
+      gtag('consent', 'default', { analytics_storage: 'denied' })
+      try {
+        if (localStorage.getItem('cookieConsent') === 'granted') {
+          gtag('consent', 'update', { analytics_storage: 'granted' })
+        }
+      } catch (e) {}
+      gtag('config', {{ ga_id|json_encode|raw }})
+    </script>
+    {% endif %}
+
+    {% block stylesheets %}
+      {% do assets.addCss('theme://css/site.css') %}
+      {% if is_post %}{% do assets.addCss('theme://css/highlight.css') %}{% endif %}
+    {% endblock %}
+    {{ assets.css()|raw }}
+
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }} — Blog" href="{{ base_url }}/blog.rss" />
+    <link rel="sitemap" href="{{ base_url }}/sitemap.xml" />
+  </head>
+  <body class="font-sans antialiased flex flex-col min-h-screen px-6 md:px-12 max-w-4xl mx-auto">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    {% include 'partials/header.html.twig' %}
+    <main id="main-content" class="flex-grow flex flex-col py-10 space-y-12 w-full">
+      {% block content %}{% endblock %}
+    </main>
+    {% include 'partials/footer.html.twig' %}
+    {% if ga_id %}{% include 'partials/cookie-banner.html.twig' %}{% endif %}
+
+    {% block javascripts %}
+      {% do assets.addJs('theme://js/site.js', {loading: 'defer'}) %}
+    {% endblock %}
+    {{ assets.js()|raw }}
+  </body>
+</html>

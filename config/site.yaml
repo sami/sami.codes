@@ -1,0 +1,17 @@
+title: Sami Bashraheel
+default_lang: en
+author:
+  name: Sami Bashraheel
+  email: hello@sami.codes
+taxonomies: [tag]
+metadata:
+  description: 'Sami Bashraheel, Full-Stack Web Developer in London. Web projects and the Building the Web blog series.'
+summary:
+  enabled: true
+  format: short
+  size: 300
+blog:
+  route: '/blog'
+redirects:
+  '/rss.xml': '/blog.rss'
+  '/sitemap-index.xml': '/sitemap.xml'

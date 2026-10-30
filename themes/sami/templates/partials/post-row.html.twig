@@ -1,0 +1,21 @@
+{# Row used on the blog and tag listings. Expects `post`, optional `active_tag`. #}
+{% set words = post.rawMarkdown|striptags|split(' ')|filter(w => w|trim)|length %}
+<div class="tech-card relative rounded-lg p-6 bg-surface border border-brand/20 transition-all duration-300 hover:-translate-y-1 hover:border-brand hover:shadow-lg hover:shadow-brand/20 group">
+  <div class="flex flex-col sm:flex-row sm:items-baseline gap-2 mb-2">
+    <time datetime="{{ post.date|date('c') }}" class="text-xs font-mono text-text-secondary shrink-0">{{ post.date|date('d/m/Y') }}</time>
+    <h2 class="text-lg font-bold group-hover:underline text-text-primary">
+      <a href="{{ post.url }}" class="after:absolute after:inset-0">{{ post.title }}</a>
+    </h2>
+  </div>
+  <p class="text-sm mb-4 text-text-secondary">{{ post.header.description }}</p>
+  <div class="flex flex-wrap items-center justify-between gap-4">
+    <ul class="relative z-10 flex gap-2 font-mono text-xs flex-wrap list-none p-0 m-0" role="list">
+      {% for tag in post.taxonomy.tag %}
+        <li>
+          <a href="{{ base_url }}/blog/tags/{{ tag|url_encode }}" class="transition-colors {{ tag == active_tag ? 'text-text-primary font-bold' : 'text-brand hover:underline' }}">{{ tag }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+    <span class="text-xs font-mono text-text-secondary">[{{ (words / 200)|round(0, 'ceil') }} min read]</span>
+  </div>
+</div>

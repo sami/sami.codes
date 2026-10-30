@@ -1,0 +1,11 @@
+{# Card used on the home page grid. Expects `post`. #}
+<a href="{{ post.url }}" class="block group h-full">
+  <div class="tech-card rounded-lg p-6 h-full flex flex-col bg-surface border border-brand/20 transition-all duration-300 hover:-translate-y-1 hover:border-brand hover:shadow-lg hover:shadow-brand/20">
+    <time datetime="{{ post.date|date('c') }}" class="text-xs font-mono text-text-secondary mb-2 block">{{ post.date|date('d/m/Y') }}</time>
+    <h3 class="text-lg font-bold mb-2 group-hover:underline text-text-primary line-clamp-2">{{ post.title }}</h3>
+    <p class="text-sm mb-4 text-text-secondary flex-grow line-clamp-3">{{ post.header.description }}</p>
+    <ul class="flex gap-2 font-mono text-xs flex-wrap text-brand list-none p-0 m-0" role="list">
+      {% for tag in post.taxonomy.tag|slice(0, 3) %}<li>{{ tag }}</li>{% endfor %}
+    </ul>
+  </div>
+</a>

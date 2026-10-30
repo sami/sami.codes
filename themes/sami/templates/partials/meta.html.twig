@@ -1,0 +1,57 @@
+<title>{{ full_title|e }}</title>
+<meta name="title" content="{{ full_title|e }}" />
+<meta name="description" content="{{ meta_description|e }}" />
+<link rel="canonical" href="{{ canonical }}" />
+
+<meta property="og:type" content="{{ is_post ? 'article' : 'website' }}" />
+<meta property="og:url" content="{{ canonical }}" />
+<meta property="og:title" content="{{ full_title|e }}" />
+<meta property="og:description" content="{{ meta_description|e }}" />
+<meta property="og:image" content="{{ og_image }}" />
+<meta property="og:locale" content="en_GB" />
+{% if is_post %}
+<meta property="article:published_time" content="{{ page.date|date('c') }}" />
+<meta property="article:author" content="{{ base_url_absolute }}" />
+{% for tag in page.taxonomy.tag %}
+<meta property="article:tag" content="{{ tag|e }}" />
+{% endfor %}
+{% endif %}
+
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="{{ canonical }}" />
+<meta property="twitter:title" content="{{ full_title|e }}" />
+<meta property="twitter:description" content="{{ meta_description|e }}" />
+<meta property="twitter:image" content="{{ og_image }}" />
+{% if theme_config.twitter_handle %}
+<meta property="twitter:site" content="{{ theme_config.twitter_handle }}" />
+{% endif %}
+
+{% if is_home %}
+<script type="application/ld+json">
+{{ {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  'name': site.author.name,
+  'url': base_url_absolute,
+  'jobTitle': 'Full-Stack Web Developer',
+  'sameAs': theme_config.socials|column('url')
+}|json_encode(constant('JSON_UNESCAPED_SLASHES'))|raw }}
+</script>
+{% endif %}
+
+{% if is_post %}
+<script type="application/ld+json">
+{{ {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  'headline': page.title,
+  'description': meta_description,
+  'image': og_image,
+  'url': canonical,
+  'datePublished': page.date|date('c'),
+  'author': { '@type': 'Person', 'name': site.author.name, 'url': base_url_absolute },
+  'publisher': { '@type': 'Person', 'name': site.author.name, 'url': base_url_absolute },
+  'keywords': page.taxonomy.tag|default([])
+}|json_encode(constant('JSON_UNESCAPED_SLASHES') b-or constant('JSON_UNESCAPED_UNICODE'))|raw }}
+</script>
+{% endif %}

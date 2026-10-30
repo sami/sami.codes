@@ -1,0 +1,9 @@
+<footer class="py-10 flex flex-col md:flex-row justify-between items-center text-xs font-mono gap-2 text-text-secondary w-full" role="contentinfo">
+  <p>&copy; {{ 'now'|date('Y') }} {{ site.author.name }}.</p>
+  {% if config.theme.google_analytics_id|trim %}
+  <button type="button" id="cookie-preferences" class="underline hover:no-underline cursor-pointer transition-opacity hover:opacity-80 text-text-secondary bg-transparent border-none">
+    Cookie Preferences
+  </button>
+  {% endif %}
+  <p>London, UK.</p>
+</footer>

@@ -1,0 +1,16 @@
+title: Blog post
+extends@:
+  type: default
+  context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      fields:
+        content:
+          fields:
+            header.description:
+              type: textarea
+              label: Description
+              help: Shown on post cards, in search results and when the post is shared.
+              ordering@: header.title

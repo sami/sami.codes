@@ -1,0 +1,10 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+  <section class="w-full font-mono">
+    <p class="text-brand text-sm uppercase tracking-widest font-bold mb-4">Error 404</p>
+    <h1 class="text-3xl md:text-4xl font-bold text-text-primary mb-4">Page not found</h1>
+    <p class="text-text-secondary mb-8">&gt; cd {{ uri.path|e }}<br />&gt; No such file or directory</p>
+    <a href="{{ home_url }}" class="text-brand hover:underline">cd ~</a>
+  </section>
+{% endblock %}
