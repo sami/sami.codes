@@ -1,0 +1,11 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+  <article class="w-full">
+    <a href="{{ home_url }}" class="block mb-6 text-sm font-mono text-brand hover:underline">cd ../</a>
+    <h1 class="text-3xl md:text-4xl font-bold text-text-primary mb-8">{{ page.title }}</h1>
+    <div class="prose prose-slate max-w-none prose-headings:text-text-primary prose-p:text-text-secondary prose-a:text-brand prose-strong:text-text-primary prose-li:text-text-secondary prose-li:marker:text-brand">
+      {{ page.content|raw }}
+    </div>
+  </article>
+{% endblock %}

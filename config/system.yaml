@@ -1,0 +1,48 @@
+absolute_urls: false
+timezone: 'Europe/London'
+param_sep: ':'
+
+home:
+  alias: '/home'
+
+pages:
+  theme: sami
+  markdown:
+    extra: true
+    auto_line_breaks: false
+    auto_url_links: false
+    escape_markup: false
+    special_chars:
+      '>': 'gt'
+      '<': 'lt'
+  types: [html, htm, xml, txt, json, rss, atom]
+  append_url_extension: ''
+  redirect_default_route: false
+  redirect_trailing_slash: true
+  ignore_hidden: true
+  dateformat:
+    default: 'Y-m-d'
+    short: 'd/m/Y'
+    long: 'j F Y'
+
+cache:
+  enabled: true
+  check:
+    method: file
+
+twig:
+  cache: true
+  debug: false
+  autoescape: true
+
+assets:
+  css_pipeline: false
+  js_pipeline: false
+  enable_asset_timestamp: true
+
+errors:
+  display: false
+  log: true
+
+debugger:
+  enabled: false

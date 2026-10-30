@@ -1,0 +1,50 @@
+name: Sami
+slug: sami
+type: theme
+version: 1.0.0
+description: Theme for sami.codes, ported from the Astro site. Tailwind CSS, 15 colour themes, jump game and consent-aware analytics.
+icon: code
+author:
+  name: Sami Bashraheel
+  email: hello@sami.codes
+  url: https://sami.codes
+homepage: https://sami.codes
+license: MIT
+compatibility:
+  grav: ['1.7', '2.0']
+dependencies:
+  - { name: grav, version: '>=1.7.0' }
+
+form:
+  validation: loose
+  fields:
+    contact_email:
+      type: email
+      label: Contact email
+      help: Used by the "Say Hello" button.
+    google_analytics_id:
+      type: text
+      label: Google Analytics ID
+      help: For example G-XXXXXXX. Leave empty to turn off analytics and the cookie banner.
+    google_site_verification:
+      type: text
+      label: Google Search Console verification code
+    twitter_handle:
+      type: text
+      label: X handle
+      placeholder: '@made_by_sami'
+    socials:
+      type: list
+      label: Social links
+      fields:
+        .name:
+          type: select
+          label: Network
+          options:
+            github: GitHub
+            linkedin: LinkedIn
+            x: X
+            devto: Dev.to
+        .url:
+          type: url
+          label: URL

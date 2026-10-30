@@ -1,0 +1,20 @@
+<header class="py-10 flex flex-col md:flex-row gap-6 justify-between items-center w-full relative z-20" role="banner">
+  <a href="{{ home_url }}" class="logo select-none" aria-label="Sami Bashraheel, home">
+    <svg width="280" height="50" viewBox="0 0 280 50" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <title>Sami Bashraheel</title>
+      <text x="0" y="35" font-family="'Fira Code', monospace" font-size="24" class="logo-bracket" font-weight="bold">&lt;</text>
+      <text x="20" y="35" font-family="'Fira Code', monospace" font-size="24" class="logo-name" font-weight="bold">Sami Bashraheel</text>
+      <text x="250" y="35" font-family="'Fira Code', monospace" font-size="24" class="logo-bracket" font-weight="bold">/&gt;</text>
+    </svg>
+  </a>
+
+  <nav class="flex items-center gap-3 flex-wrap justify-center" aria-label="Site controls">
+    <button type="button" aria-label="Switch theme" class="theme-toggle rounded-lg px-4 py-2 border border-brand bg-surface text-brand text-xs font-bold font-mono transition-all hover:bg-brand hover:text-surface focus:outline-none focus-visible:ring-2 focus-visible:ring-brand min-w-[140px]" data-theme-toggle>
+      Switch Theme
+    </button>
+    <span class="theme-toggle-announcer sr-only" aria-live="polite"></span>
+    <button type="button" id="contact-trigger" class="cta-btn px-6 py-2 rounded-lg" data-email="{{ config.theme.contact_email|e }}" aria-label="Contact via email">
+      Say Hello 👋
+    </button>
+  </nav>
+</header>

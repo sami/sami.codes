@@ -1,0 +1,25 @@
+---
+title: 'Hello, World. I''m Sami'
+description: 'A quick intro about who I am, what I build, and why I started writing.'
+date: '2026-02-28 00:00'
+author: Sami Bashraheel
+taxonomy:
+  tag:
+    - introduction
+    - personal
+---
+Hi, I'm Sami. 👋
+
+I'm a developer who likes building things for the web. This blog is where I keep track of what I'm learning, share the projects I make, and write down my thoughts along the way.
+
+## What I'm working on
+
+Right now I'm building a few different projects, mostly web apps and interactive tools. I usually reach for **Astro**, **React**, **TypeScript**, and **Tailwind CSS**. I handle everything from the initial idea to the final code.
+
+## Why I'm writing
+
+I think it's helpful to build things out in the open. Writing forces me to think clearly about my code. It's a great way to meet people and document my progress for anyone else trying to learn the same stuff.
+
+Whether you write code for a living or you're just curious about how things work on the internet, stick around. Let's build something together.
+
+You can find me on [GitHub](https://github.com/sami), [X](https://x.com/made_by_sami), and [dev.to](https://dev.to/sami).

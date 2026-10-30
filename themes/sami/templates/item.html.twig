@@ -1,0 +1,28 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+  <article class="w-full">
+    <div class="mb-8">
+      <a href="{{ page.parent.url }}" class="block mb-6 text-sm font-mono text-brand hover:underline">cd ../</a>
+      <h1 class="text-3xl md:text-4xl font-bold text-text-primary mb-4">{{ page.title }}</h1>
+      <div class="flex flex-col sm:flex-row sm:items-center gap-4 text-sm font-mono text-text-secondary">
+        <time datetime="{{ page.date|date('c') }}">{{ page.date|date('j F Y') }}</time>
+        <ul class="flex gap-2 flex-wrap text-brand list-none p-0 m-0" role="list">
+          {% for tag in page.taxonomy.tag %}
+            <li><a href="{{ base_url }}/blog/tags/{{ tag|url_encode }}" class="text-brand hover:underline transition-colors">{{ tag }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <div class="prose prose-slate max-w-none prose-headings:text-text-primary prose-headings:font-bold prose-p:text-text-secondary prose-p:leading-relaxed prose-a:text-brand prose-a:transition-colors hover:prose-a:text-brand/80 prose-strong:text-text-primary prose-strong:font-bold prose-code:text-brand prose-code:bg-surface-alt prose-code:px-1 prose-code:rounded prose-code:before:content-none prose-code:after:content-none prose-pre:bg-[#0d1117] prose-pre:text-[#c9d1d9] prose-pre:border prose-pre:border-brand/20 [&_pre_code]:!bg-transparent [&_pre_code]:!text-inherit [&_pre_code]:!p-0 prose-ul:text-text-secondary prose-ol:text-text-secondary prose-li:text-text-secondary prose-li:marker:text-brand prose-blockquote:border-l-brand prose-blockquote:text-text-secondary prose-blockquote:bg-surface-alt/50 prose-blockquote:px-4 prose-blockquote:py-1 prose-blockquote:rounded-r prose-img:rounded-lg prose-img:border prose-img:border-brand/20 prose-hr:border-brand/20 prose-th:text-text-primary prose-td:text-text-secondary">
+      {{ page.content|raw }}
+    </div>
+  </article>
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+  {% do assets.addJs('theme://js/highlight.min.js', {loading: 'defer'}) %}
+  {% do assets.addInlineJs("document.addEventListener('DOMContentLoaded',function(){if(window.hljs){document.querySelectorAll('pre code').forEach(function(el){hljs.highlightElement(el)})}})") %}
+{% endblock %}

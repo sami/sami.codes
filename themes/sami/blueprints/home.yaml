@@ -1,0 +1,52 @@
+title: Home
+extends@:
+  type: default
+  context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      fields:
+        content:
+          fields:
+            content:
+              unset@: true
+            header.description:
+              type: textarea
+              label: Meta description
+              ordering@: header.title
+            header.hero_name:
+              type: text
+              label: Name in the heading
+            header.hero_tagline:
+              type: text
+              label: Tagline
+            header.stack:
+              type: array
+              label: Stack
+              value_only: true
+            header.projects:
+              type: list
+              label: Projects
+              style: vertical
+              fields:
+                .title:
+                  type: text
+                  label: Title
+                .description:
+                  type: textarea
+                  label: Description
+                .url:
+                  type: url
+                  label: Link
+                .tags:
+                  type: array
+                  label: Tech tags
+                  value_only: true
+            header.build_log:
+              type: array
+              label: Build log lines
+              value_only: true
+            header.build_status:
+              type: text
+              label: Build status line
